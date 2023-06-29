@@ -1,0 +1,29 @@
+micronaut:
+  application:
+    name: backend-service
+  config-client:
+    enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+        descriptions: true
+        step: PT1M
+    enabled: true
+consul:
+  client:
+    defaultZone: ${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}
+    config:
+      format: yaml
+    registration:
+      enabled: true
+#      check:
+#        http: true
+    prefer-ip-address: true
+spring:
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:1234
+      retry-attempts: 4
+      retry-delay: 2s
